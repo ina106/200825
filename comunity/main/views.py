@@ -40,8 +40,7 @@ def comment_create(request, post_id):
             comment.post_id=post_id
             comment.save()
         else:
-            messages.info(request, "로그인 필요")
-
+            messages.info(request, "댓글 작성 실패")
             print("댓글작성 실패")
     else:
         messages.warning(request,"로그인 필요")
