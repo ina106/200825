@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from .models import Post, Comment
+from .forms import CommentForm
 
 # ListView
 class IndexView(generic.ListView):
@@ -12,3 +13,5 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
     model = Post
     template_name = 'detail.html'
+    comment_form = CommentForm()
+    
