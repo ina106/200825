@@ -25,4 +25,5 @@ class DetailView(generic.DetailView):
         #fbv에 {}로 담았던 context를 만드는 함수다.
         context_data = super().get_context_data(**kwargs) #기본 context 인스턴스가 반환된다.
         context_data['form']=CommentForm()
+        context_data['comments']=self.object.comment_set.all()
         return context_data
