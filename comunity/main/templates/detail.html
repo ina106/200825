@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 500px;
+            border: 1px solid black;
+        }
+        .content{
+            margin: 10px;
+        }
+        .author {
+            font-size: 20px;
+        }
+        .comment{
+            width: auto;
+            height: auto;
+            padding: 10px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='box'>
+        <div class="content">
+            <p> {{post.id}}번째 글</p>
+            <h2>{{post.title}}</h2>
+            <p class="author">by. {{post.author}}</p>
+            <p class="body">{{post.content}}</p>
+        </div>
+        
+        <div class="comment">
+            <p>댓글</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
