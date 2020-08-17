@@ -43,7 +43,7 @@
                 <input type="submit" value="Write">
             </form>
             {% for comment in comments %}
-                <p>{{comment.author}} {{comment.created|date:"D d M Y"}}</p> <!--https://docs.djangoproject.com/en/dev/ref/templates/builtins/?from=olddocs-->
+                <p>{{comment.author}} {{comment.created|date:"D d M Y"}}</p>
                 <p>{{comment.content}}</p> 
             {% endfor %}
         </div>
@@ -53,7 +53,7 @@
 <script type="text/javascript">
     {% if messages %}
         {% for message in messages %}
-            alert("{{message.message}}");
+            alert("{{message.message}}"); //alert는 "~"로 적어주는 것 까먹지 말자 ! 
         {% endfor %}
     {% endif %}
 </script>
