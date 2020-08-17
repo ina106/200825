@@ -32,9 +32,9 @@ def login_request(request):
         return render(request, 'login.html')
 
 
-def logout_request(request):
-    auth.logout(request)
-    print("로그아웃")
-    return render(request, 'home.html')
+# def logout_request(request):
+#     auth.logout(request)
+#     print("로그아웃")
+#     return render(request, 'home.html')
 
 

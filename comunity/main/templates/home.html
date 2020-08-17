@@ -27,21 +27,20 @@
     <a href="{% url 'login' %}">
         <button>로그인</button>
     </a>
-
     {% endif %}
 
     <hr>
 
-    {% if post %}
+    <!-- {% if post %} -->
     <ul>
         {% for post in post %}
         <li><a href="{% url 'detail' post.id %}">{{post.title}}</a></li>
 
         {% endfor %}
     </ul>
-    {% else %}
+    <!-- {% else %} -->
     <h3>아직 아무 게시물도 없습니다.</h3>
-    {% endif %}
+    <!-- {% endif %} -->
 </body>
 
 </html>

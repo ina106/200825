@@ -6,4 +6,5 @@ from . import views
 urlpatterns=[
     path('', views.IndexView.as_view(), name='home'),
     path('<int:pk>/', views.DetailView.as_view(), name='detail'),
+    path('<int:post_id>/add_comment/create', views.comment_create, name='comment_create'),
 ]
