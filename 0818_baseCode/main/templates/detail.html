@@ -8,7 +8,7 @@
     <style>
         .box {
             width: 500px;
-            height: 500px;
+            height: auto;
             border: 1px solid black;
         }
         .content{
@@ -29,17 +29,18 @@
 <body>
     <div class='box'>
         <div class="content">
-            <p> {{post.id}}번째 글</p>
-            <h2>{{post.title}}</h2>
-            <p class="author">by. {{post.author}}</p>
-            <p class="body">{{post.content}}</p>
+            <p> {{ppost.id}}번째 글</p>
+            <h2>{{ppost.title}}</h2>
+            <p class="author">by. {{ppost.author}}</p>
+            <p class="body">{{ppost.content}}</p>
         </div>
-        
+
         <div class="comment">
             <p>댓글</p>
         </div>
     </div>
 
 </body>
+
 
 </html>
