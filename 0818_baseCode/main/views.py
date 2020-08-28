@@ -19,8 +19,14 @@ class DeleteView(generic.DeleteView):
     context_object_name='ppost'
     success_url = reverse_lazy('home')
 
+
 class UpdateView(generic.UpdateView):
     model = Post
     template_name = 'update.html'
     fields = ['title','content']
     success_url = reverse_lazy('home')
+
+    def get_queryset(self): 
+        queryset = super(UpdateView, self).get_queryset() 
+        queryset = queryset.filter(author=self.request.user) 
+        return queryset 

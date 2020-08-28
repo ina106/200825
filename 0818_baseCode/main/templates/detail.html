@@ -23,6 +23,7 @@
             padding: 10px;
             border: 1px solid black;
         }
+        
     </style>
 </head>
 
@@ -40,9 +41,10 @@
         </div>
     </div>
 <br>
+{% if ppost.author_id == user.pk %} 
 <a href="{% url 'update' ppost.id %}"><button>수정</button></button></a>
 <a href="{% url 'delete' ppost.id%}"><button>삭제</button></a>
-
+{% endif %}
 </body>
 
 
