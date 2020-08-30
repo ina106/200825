@@ -27,6 +27,8 @@
 </head>
 
 <body>
+    <h1>안녕</h1>
+
     <div class='box'>
         <div class="content">
             <p> {{ppost.id}}번째 글</p>
@@ -43,9 +45,17 @@
                 <input type="submit" value="Write">
             </form>
             {% for comment in comments %}
-                <p>{{comment.author}} {{comment.created|date:"D d M Y"}}</p>
+                <p><b>{{comment.author}}</b> 
+                    {{comment.created|date:"D d M Y"}}</p>
                 <p>{{comment.content}}</p> 
+                
+                {% if user == comment.author %}
+                <a href="{% url 'comment_update' ppost.id comment.id %}"><button>수정</button></a>
+                <a href="{% url 'comment_delete' ppost.id comment.id %}"><button>삭제</button></a>
+                <p>-------------------------------</p>
+                {% endif %}
             {% endfor %}
+            
         </div>
     </div>
 

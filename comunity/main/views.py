@@ -28,6 +28,17 @@ class DetailView(generic.DetailView):
     # def get_sucess_url(self):
     #     return reverse('detail', kwargs={'pk':self.object.pk})
     
+class UpdateView(generic.UpdateView):
+    model=Post
+    template_name = 'update.html'
+    context_object_name='ppost'
+
+    def get_context_data(self, **kwargs): 
+        context_data = super(DetailView, self).get_context_data(**kwargs) #기본 context 인스턴스가 반환된다.
+        context_data['form']=CommentForm()
+        context_data['comments']=self.object.comment_set.all()
+        return context_data
+    
 
 def comment_create(request, post_id):
     if not request.user.is_anonymous:
@@ -42,3 +53,27 @@ def comment_create(request, post_id):
     else:
         messages.info(request, "로그인이 필요합니다.")
     return HttpResponseRedirect(reverse('detail',args=(post_id,)))
+
+
+def comment_update(request, post_id, comment_id):
+    comment_value = Comment.objects.get(pk=comment_id)
+    if comment_value.author == request.user:
+        comment_form = CommentForm(instance=comment_value)
+        if request.method == 'POST':
+            updated_form=CommentForm(request.POST, instance=comment_value)
+            if updated_form.is_valid():
+                updated_form.save()
+                return HttpResponseRedirect(reverse('detail',args=(post_id,)))
+        return render(request,'update.html', {'comment_form':comment_form})
+    else:
+        messages.info(request,"댓글 수정 권한이 없습니다.")
+        return HttpResponseRedirect(reverse('detail',args=(post_id,)))
+
+def comment_delete(request, post_id ,comment_id):
+    comment_value = Comment.objects.get(pk=comment_id)
+    if comment_value.author == request.user:
+        comment_value.delete()
+        return HttpResponseRedirect(reverse('detail',args=(post_id,)))
+    else:
+        messages.info(request,"댓글 삭제 권한이 없습니다.")
+        return HttpResponseRedirect(reverse('detail',args=(post_id,)))

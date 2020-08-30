@@ -1,0 +1,8 @@
+<div>
+    <p>댓글 수정</p>
+    <form method="POST">
+        {% csrf_token %}
+        {{comment_form.as_p}}
+        <input type="submit" value="수정하기">
+    </form>
+</div>
